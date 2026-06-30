@@ -1,0 +1,61 @@
+[project]
+name = "objstash"
+version = "0.2.0"
+description = "A persistent namespace backed by SQLite. Use Python objects, forget databases."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Joey Meijer", email = "joeymeij@gmail.com" }]
+keywords = ["persistence", "sqlite", "namespace", "key-value", "storage"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/JoeyMeijers/objstash"
+Repository = "https://github.com/JoeyMeijers/objstash"
+Issues = "https://github.com/JoeyMeijers/objstash/issues"
+Changelog = "https://github.com/JoeyMeijers/objstash/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["objstash"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["objstash", "tests"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=objstash --cov-report=term-missing --cov-fail-under=95"
+testpaths = ["tests"]
